@@ -26,14 +26,15 @@ class NMovieServiceTest {
 
     @Test
     void testGetMovieById_Found() {
-        NMovie movie = new NMovie();
-        movie.setId(1L);
-        movie.setTitle("Mátrix");
-        movie.setReleaseYear(1999);
-        movie.setRuntimeMin(136);
-        movie.setPlot("Hacker felfedezi a Mátrixot");
-        movie.setPosterUrl("matrix.jpg");
-        movie.setCreatedAt(LocalDateTime.now());
+        NMovie movie = NMovie.builder()
+        		.id(1L)
+        		.title("Mátrix")
+        		.releaseYear(1999)
+        		.runtimeMin(136)
+        		.plot("Hacker felfedezi a Mátrixot")
+        		.posterUrl("matrix.jpg")
+        		.createdAt(LocalDateTime.now())
+        		.build();
 
         when(nMovieRepository.findById(1L)).thenReturn(Optional.of(movie));
 

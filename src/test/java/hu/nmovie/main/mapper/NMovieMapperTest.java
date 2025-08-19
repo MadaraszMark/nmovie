@@ -34,15 +34,16 @@ class NMovieMapperTest {
 
     @Test
     void testToResponse() {
-        NMovie entity = new NMovie();
-        entity.setId(1L);
-        entity.setTitle("Inception");
-        entity.setReleaseYear(2010);
-        entity.setRuntimeMin(148);
-        entity.setPlot("Egy profi tolvaj emberek álmaiból lop ötleteket.");
-        entity.setPosterUrl("https://image.tmdb.org/t/p/inception.jpg");
-        entity.setCreatedAt(LocalDateTime.of(2025, 1, 1, 12, 0));
-        entity.setUpdatedAt(LocalDateTime.of(2025, 1, 2, 12, 0));
+        NMovie entity = NMovie.builder()
+                .id(1L)
+                .title("Inception")
+                .releaseYear(2010)
+                .runtimeMin(148)
+                .plot("Egy profi tolvaj emberek álmaiból lop ötleteket.")
+                .posterUrl("https://image.tmdb.org/t/p/inception.jpg")
+                .createdAt(LocalDateTime.of(2025, 1, 1, 12, 0))
+                .updatedAt(LocalDateTime.of(2025, 1, 2, 12, 0))
+                .build();
 
         NMovieResponse response = mapper.toResponse(entity);
 

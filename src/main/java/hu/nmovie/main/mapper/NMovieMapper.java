@@ -1,21 +1,22 @@
 package hu.nmovie.main.mapper;
 
+import org.springframework.stereotype.Component;
+
 import hu.nmovie.main.dto.NMovieRequest;
 import hu.nmovie.main.dto.NMovieResponse;
 import hu.nmovie.main.model.NMovie;
-import org.springframework.stereotype.Component;
 
 @Component
 public class NMovieMapper {
 
     public NMovie toEntity(NMovieRequest dto) {
-        NMovie m = new NMovie();
-        m.setTitle(dto.getTitle());
-        m.setReleaseYear(dto.getReleaseYear());
-        m.setRuntimeMin(dto.getRuntimeMin());
-        m.setPlot(dto.getPlot());
-        m.setPosterUrl(dto.getPosterUrl());
-        return m;
+        return NMovie.builder()
+                .title(dto.getTitle())
+                .releaseYear(dto.getReleaseYear())
+                .runtimeMin(dto.getRuntimeMin())
+                .plot(dto.getPlot())
+                .posterUrl(dto.getPosterUrl())
+                .build();
     }
 
     public NMovieResponse toResponse(NMovie entity) {
@@ -31,4 +32,5 @@ public class NMovieMapper {
         return dto;
     }
 }
+
 

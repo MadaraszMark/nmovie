@@ -18,16 +18,31 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "movie")
 @EntityListeners(AuditingEntityListener.class)
+@Getter @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED) // JPA-nak kell
+@AllArgsConstructor
+@ToString(exclude = "plot")
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Builder
 public class NMovie {
 	
 	//POJO
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@EqualsAndHashCode.Include
 	private Long id;
 	
 	@NotBlank(message = "A film címe kötelező!")
@@ -61,111 +76,5 @@ public class NMovie {
 	@Column(name = "updated_at")
 	private LocalDateTime updatedAt;
 
-	public NMovie(Long id, String title, int releaseYear, int runtimeMin, String plot,
-            String posterUrl, boolean isDeleted, LocalDateTime createdAt, LocalDateTime updatedAt) {
-	this.id = id;
-  	this.title = title;
-  	this.releaseYear = releaseYear;
-  	this.runtimeMin = runtimeMin;
-  	this.plot = plot;
-  	this.posterUrl = posterUrl;
-  	this.isDeleted = isDeleted;
-  	this.createdAt = createdAt;
-  	this.updatedAt = updatedAt;
-	}
-
-	public NMovie(String title, int releaseYear, int runtimeMin, String plot,
-            String posterUrl, boolean isDeleted, LocalDateTime createdAt, LocalDateTime updatedAt) {
-	this.title = title;
-  	this.releaseYear = releaseYear;
-  	this.runtimeMin = runtimeMin;
-  	this.plot = plot;
-  	this.posterUrl = posterUrl;
-  	this.isDeleted = isDeleted;
-  	this.createdAt = createdAt;
-  	this.updatedAt = updatedAt;
-	}
 	
-	public NMovie() {
-		// Hibernate
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public int getReleaseYear() {
-		return releaseYear;
-	}
-
-	public void setReleaseYear(int releaseYear) {
-		this.releaseYear = releaseYear;
-	}
-
-	public int getRuntimeMin() {
-		return runtimeMin;
-	}
-
-	public void setRuntimeMin(int runtimeMin) {
-		this.runtimeMin = runtimeMin;
-	}
-
-	public String getPlot() {
-		return plot;
-	}
-
-	public void setPlot(String plot) {
-		this.plot = plot;
-	}
-
-	public String getPosterUrl() {
-		return posterUrl;
-	}
-
-	public void setPosterUrl(String posterUrl) {
-		this.posterUrl = posterUrl;
-	}
-
-	public boolean isDeleted() {
-		return isDeleted;
-	}
-
-	public void setDeleted(boolean isDeleted) {
-		this.isDeleted = isDeleted;
-	}
-
-	public LocalDateTime getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(LocalDateTime createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public LocalDateTime getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(LocalDateTime updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-
-	@Override
-	public String toString() {
-		return "NMovie [id=" + id + ", title=" + title + ", releaseYear=" + releaseYear + ", runtimeMin=" + runtimeMin
-				+ ", plot=" + plot + ", posterUrl=" + posterUrl + ", isDeleted=" + isDeleted + ", createdAt="
-				+ createdAt + ", updatedAt=" + updatedAt + "]";
-	}
 }
