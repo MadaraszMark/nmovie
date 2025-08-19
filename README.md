@@ -6,6 +6,7 @@ Technológiák:
 - Spring Boot 3.5.4
 - Spring Web
 - Sprin Data JPA
+- Lombok
 - Hibernate
 - REST API's
 - Jakarta Validation
