@@ -1,5 +1,5 @@
-## nmovie
-# NMovie - Spring Boot & REST API's
+# nmovie
+## NMovie - Spring Boot & REST API's
 
 Technológiák:
 - Java 17+
