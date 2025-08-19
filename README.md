@@ -4,12 +4,13 @@
 Technológiák:
 - Java 17+
 - Spring Boot 3.5.4
-- Spring web
+- Spring Web
 - Sprin Data JPA
 - Hibernate
 - REST API's
+- Jakarta Validation
 - Swagger
 - Unit tesztek (JUnit 5 & Mockito & Spring Boot Test)
 
 ## Mi ez?  
-Itt gyakorlom a legújabb technológiákat
+Saját gyakorló projekt, ahol Spring Boot, JPA, Hibernate és Swagger használatával építek egy filmes REST API-t. A projektet folyamatosan bővítem, így gyakorlom a legújabb technológiákat és best practice-eket.
