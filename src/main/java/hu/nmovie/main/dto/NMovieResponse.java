@@ -5,6 +5,9 @@ import java.time.LocalDateTime;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
+// DTO osztály, amely a klienseknek visszaküldendő film adatokat tartalmazza.
+// A film összes fontos mezőjét tartalmazza (pl. azonosító, cím, év, hossz, stb.), beleértve a metaadatokat (létrehozás és módosítás ideje).
+
 @Getter
 @Setter
 @NoArgsConstructor

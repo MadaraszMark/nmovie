@@ -9,6 +9,12 @@ import hu.nmovie.main.model.NMovie;
 import hu.nmovie.main.repository.NMovieRepository;
 import jakarta.transaction.Transactional;
 
+/**
+ * A filmekkel kapcsolatos üzleti logikát megvalósító szolgáltatás (service) osztály.
+ * Feladata a filmek lekérése, hozzáadása, keresése és logikai törlése a repository réteg segítségével.
+ * Kivételkezelést is végez: például ha egy kért film nem létezik, NMovieNotFoundException-t dob.
+ */
+
 @Service
 public class NMovieService {
 	

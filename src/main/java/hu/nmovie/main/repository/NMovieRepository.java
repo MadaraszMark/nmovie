@@ -11,6 +11,11 @@ import org.springframework.data.repository.query.Param;
 
 import hu.nmovie.main.model.NMovie;
 
+/**
+ * Repository interfész a NMovie entitáshoz, az adatbázis műveletekért felel.
+ * A Spring Data JPA biztosítja az alap műveletek implementációját, és itt további lekérdezési metódusok vannak definiálva a filmek kereséséhez.
+ */
+
 public interface NMovieRepository extends JpaRepository<NMovie, Long>{
 	Optional<NMovie> findById(Long id);
 	

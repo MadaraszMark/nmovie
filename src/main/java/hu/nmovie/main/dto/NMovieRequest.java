@@ -7,6 +7,9 @@ import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+// DTO osztály, amely egy új film létrehozásához vagy frissítéséhez szükséges adatokat tartalmaz.
+// A kliens által küldött adatok szállítására szolgál (pl. cím, év, hossz, cselekmény, poszter URL).
+
 @Getter
 @Setter
 @NoArgsConstructor

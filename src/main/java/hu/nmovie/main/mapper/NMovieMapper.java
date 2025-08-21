@@ -6,10 +6,15 @@ import hu.nmovie.main.dto.NMovieRequest;
 import hu.nmovie.main.dto.NMovieResponse;
 import hu.nmovie.main.model.NMovie;
 
+/**
+ * Mapper osztály a NMovie entitás és a kapcsolódó DTO-k közötti átalakításra.
+ * Feladata a bejövő adatok (NMovieRequest) entitássá alakítása, valamint az entitás adatainak átvezetése a kimenő DTO-ba (NMovieResponse).
+ */
+
 @Component
 public class NMovieMapper {
 
-    public NMovie toEntity(NMovieRequest dto) {
+    public NMovie toEntity(NMovieRequest dto) { // A kapott NMovieRequest DTO alapján létrehoz egy új NMovie entitást.
         return NMovie.builder()
                 .title(dto.getTitle())
                 .releaseYear(dto.getReleaseYear())
@@ -19,7 +24,7 @@ public class NMovieMapper {
                 .build();
     }
 
-    public NMovieResponse toResponse(NMovie entity) {
+    public NMovieResponse toResponse(NMovie entity) { // A kapott NMovie entitás alapján létrehoz egy NMovieResponse DTO-t.
         NMovieResponse dto = new NMovieResponse();
         dto.setId(entity.getId());
         dto.setTitle(entity.getTitle());

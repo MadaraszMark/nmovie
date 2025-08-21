@@ -23,6 +23,12 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
+/**
+ * REST vezérlő (controller) a film erőforrások kezelésére.
+ * Definiálja a végpontokat a filmek lekérdezéséhez, létrehozásához, kereséséhez és logikai törléséhez.
+ * A kéréseket a service réteghez továbbítja, és az eredményeket NMovieResponse DTO-kká alakítva küldi vissza.
+ */
+
 @RestController
 @RequestMapping("/movies")
 @Tag(name = "NMovies API", description = "Egyszerű filmes REST API")

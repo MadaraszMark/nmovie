@@ -27,6 +27,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * JPA entitás osztály, amely egy filmet reprezentál az adatbázisban.
+ * Lombok annotációk (@Getter, @Setter, @Builder, stb.) biztosítják a getter/setter és egyéb boilerplate kódot.
+ * Az audit mezők (@CreatedDate, @LastModifiedDate) automatikusan beállítódnak az entitás létrehozásakor és módosításakor.
+ */
+
 @Entity
 @Table(name = "movie")
 @EntityListeners(AuditingEntityListener.class)
