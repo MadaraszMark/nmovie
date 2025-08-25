@@ -16,7 +16,7 @@ import hu.nmovie.main.model.NMovie;
  * A Spring Data JPA biztosítja az alap műveletek implementációját, és itt további lekérdezési metódusok vannak definiálva a filmek kereséséhez.
  */
 
-public interface NMovieRepository extends JpaRepository<NMovie, Long>{
+public interface NMovieRepository extends JpaRepository<NMovie, Long>{ // Alap crud műveletek
 	Optional<NMovie> findById(Long id);
 	
 	Page<NMovie> findAllByIsDeletedFalse(Pageable pageable);

@@ -77,10 +77,10 @@ public class NMovieController {
 	}
 	
 	@DeleteMapping("/{id}")
-	  @Operation(summary = "Film törlése (soft delete)")
-	  public ResponseEntity<Void> delete(@PathVariable Long id) {
-		nMovieService.deleteMovie(id);
-	    return ResponseEntity.noContent().build();
-	  }
+	@Operation(summary = "Film törlése (soft delete)")
+	public ResponseEntity<Void> delete(@PathVariable Long id) {
+	    nMovieService.deleteMovie(id);
+	    return ResponseEntity.noContent().build(); // REST konvenció
+	}
 
 }

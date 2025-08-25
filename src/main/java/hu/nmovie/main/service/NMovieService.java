@@ -46,6 +46,7 @@ public class NMovieService {
 		return nMovieRepository.findAllByReleaseYearAndIsDeletedFalse(releaseYear, pageable);
 	}
 	
+	@Transactional
 	public void deleteMovie(Long id) {
 		int updated = nMovieRepository.softDeleteById(id);
 		if(updated == 0) throw new NMovieNotFoundException(id);
