@@ -15,7 +15,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-@ExtendWith(MockitoExtension.class) // Mockito-t engedélyezzük
+@ExtendWith(MockitoExtension.class) // Mockito
 class NMovieServiceTest {
 
     @Mock
