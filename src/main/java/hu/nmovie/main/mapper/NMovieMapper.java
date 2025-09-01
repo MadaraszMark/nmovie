@@ -11,7 +11,7 @@ import hu.nmovie.main.model.NMovie;
  * Feladata a bejövő adatok (NMovieRequest) entitássá alakítása, valamint az entitás adatainak átvezetése a kimenő DTO-ba (NMovieResponse).
  */
 
-@Component
+@Component			// A @Component regisztrálja a NMovieMapper-t a Spring context-ben, így más osztályokba be tudjuk injektálni.
 public class NMovieMapper {
 
     public NMovie toEntity(NMovieRequest dto) { // A kapott NMovieRequest DTO alapján létrehoz egy új NMovie entitást.

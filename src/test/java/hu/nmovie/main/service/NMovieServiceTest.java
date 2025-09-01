@@ -18,10 +18,10 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class) // Mockito
 class NMovieServiceTest {
 
-    @Mock
+    @Mock	// Hamis példány, elszigetelten tudom tesztelni a service logikát, adatbázis nélkül
     private NMovieRepository nMovieRepository; // mock objektum
 
-    @InjectMocks
+    @InjectMocks	// Létrehozza a tesztelt osztályt, és belerakja a mock-okat, hogy ne kelljen valódi függőségeket használnunk.
     private NMovieService nMovieService; // a service, amit tesztelünk
 
     @Test

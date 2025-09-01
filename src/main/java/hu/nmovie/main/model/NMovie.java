@@ -41,7 +41,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString(exclude = "plot")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Builder
+@Builder	// A @Builder a Lombok része, és automatikusan generál egy builder mintát az osztályhoz. Így fluens API segítségével, olvasható módon hozhatunk létre objektumokat, anélkül hogy hosszú konstruktort kéne hívni.
 public class NMovie {
 	
 	//POJO

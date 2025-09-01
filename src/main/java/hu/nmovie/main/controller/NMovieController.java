@@ -38,7 +38,7 @@ public class NMovieController {
 	private final NMovieMapper mapper;
 	
 	@Autowired
-	public NMovieController(NMovieService nMovieService, NMovieMapper mapper) {
+	public NMovieController(NMovieService nMovieService, NMovieMapper mapper) { 	// Az @Autowired megmondja a Springnek, hogy a konstruktor paramétereit automatikusan adja be a Spring contextből. Konstruktor injekció.
 		this.nMovieService = nMovieService;
 		this.mapper = mapper;
 	}
