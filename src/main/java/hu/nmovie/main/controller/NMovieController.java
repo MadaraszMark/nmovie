@@ -86,6 +86,7 @@ public class NMovieController {
 		return ResponseEntity.ok(nMovieService.getAverageRuntime());
 	}
 	
+	
 	@DeleteMapping("/{id}")
 	@Operation(summary = "Film törlése (soft delete)")
 	public ResponseEntity<Void> delete(@PathVariable Long id) {
