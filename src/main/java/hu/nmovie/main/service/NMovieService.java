@@ -15,7 +15,7 @@ import jakarta.transaction.Transactional;
  * Kivételkezelést is végez: például ha egy kért film nem létezik, NMovieNotFoundException-t dob.
  */
 
-@Service	
+@Service
 public class NMovieService {	// A @Service annotáció regisztrálja az osztályt a Spring context-ben, és jelzi, hogy ez az üzleti logikáért felelős réteg. Ezáltal a Spring tudja automatikusan injektálni más bean-ekbe.
 	
 	private final NMovieRepository nMovieRepository;
@@ -44,6 +44,15 @@ public class NMovieService {	// A @Service annotáció regisztrálja az osztály
 	
 	public Page<NMovie> getByReleaseYear(int releaseYear, Pageable pageable){
 		return nMovieRepository.findAllByReleaseYearAndIsDeletedFalse(releaseYear, pageable);
+	}
+	
+	public NMovie getOldest() {
+		return nMovieRepository.findTopByIsDeletedFalseOrderByReleaseYearAsc().orElseThrow(() -> new NMovieNotFoundException(-1L));
+	}
+	
+	@Transactional
+	public Double getAverageRuntime() {
+		return nMovieRepository.findAverageRuntime();
 	}
 	
 	@Transactional

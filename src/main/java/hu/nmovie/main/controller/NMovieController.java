@@ -76,6 +76,16 @@ public class NMovieController {
 		return nMovieService.getByReleaseYear(releaseDate, pageable).map(mapper::toResponse);
 	}
 	
+	@GetMapping("/oldest")
+	public NMovieResponse getMovieByOldest() {
+		return mapper.toResponse(nMovieService.getOldest());
+	}
+	
+	@GetMapping("/average-runtime")
+	public ResponseEntity<Double> getAverageRuntime(){
+		return ResponseEntity.ok(nMovieService.getAverageRuntime());
+	}
+	
 	@DeleteMapping("/{id}")
 	@Operation(summary = "Film törlése (soft delete)")
 	public ResponseEntity<Void> delete(@PathVariable Long id) {

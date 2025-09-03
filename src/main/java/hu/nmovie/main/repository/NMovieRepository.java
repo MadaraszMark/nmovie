@@ -22,6 +22,10 @@ public interface NMovieRepository extends JpaRepository<NMovie, Long>{ // Alap c
 	Page<NMovie> findAllByIsDeletedFalse(Pageable pageable);
 	Page<NMovie> findAllByTitleContainingIgnoreCaseAndIsDeletedFalse(String title, Pageable pageable);
 	Page<NMovie> findAllByReleaseYearAndIsDeletedFalse(int releaseYear, Pageable pageable);
+	Optional<NMovie> findTopByIsDeletedFalseOrderByReleaseYearAsc();
+	
+	@Query("select avg(m.runtimeMin) from NMovie m where m.isDeleted = false")
+	Double findAverageRuntime();
 	
 	@Modifying
 	@Query("UPDATE NMovie m SET m.isDeleted = true WHERE m.id = :id")
