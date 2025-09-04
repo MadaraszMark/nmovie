@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import hu.nmovie.main.dto.NMovieRequest;
 import hu.nmovie.main.dto.NMovieResponse;
+import hu.nmovie.main.dto.NMovieUpdateRequest;
 import hu.nmovie.main.mapper.NMovieMapper;
 import hu.nmovie.main.model.NMovie;
 import hu.nmovie.main.service.NMovieService;
@@ -86,6 +88,13 @@ public class NMovieController {
 		return ResponseEntity.ok(nMovieService.getAverageRuntime());
 	}
 	
+	@PutMapping("/{id}")
+	@Operation(summary = "Film frissítése")
+	public NMovieResponse updateMovie(@PathVariable Long id, @RequestBody @Valid NMovieUpdateRequest request) {
+	    NMovie updated = nMovieService.updateMovie(id, request);
+	    return mapper.toResponse(updated);
+	}
+
 	
 	@DeleteMapping("/{id}")
 	@Operation(summary = "Film törlése (soft delete)")

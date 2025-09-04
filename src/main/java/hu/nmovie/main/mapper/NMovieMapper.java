@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import hu.nmovie.main.dto.NMovieRequest;
 import hu.nmovie.main.dto.NMovieResponse;
+import hu.nmovie.main.dto.NMovieUpdateRequest;
 import hu.nmovie.main.model.NMovie;
 
 /**
@@ -35,6 +36,14 @@ public class NMovieMapper {
         dto.setCreatedAt(entity.getCreatedAt());
         dto.setUpdatedAt(entity.getUpdatedAt());
         return dto;
+    }
+    
+    public void updateEntity(NMovie entity, NMovieUpdateRequest dto) { // Update
+    	if (dto.getTitle() != null) entity.setTitle(dto.getTitle().trim());
+        if (dto.getReleaseYear() != null) entity.setReleaseYear(dto.getReleaseYear());
+        if (dto.getRuntimeMin() != null) entity.setRuntimeMin(dto.getRuntimeMin());
+        if (dto.getPlot() != null) entity.setPlot(dto.getPlot().trim());
+        if (dto.getPosterUrl() != null) entity.setPosterUrl(dto.getPosterUrl().trim());
     }
 }
 

@@ -4,7 +4,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import hu.nmovie.main.dto.NMovieUpdateRequest;
 import hu.nmovie.main.exception.NMovieNotFoundException;
+import hu.nmovie.main.mapper.NMovieMapper;
 import hu.nmovie.main.model.NMovie;
 import hu.nmovie.main.repository.NMovieRepository;
 import jakarta.transaction.Transactional;
@@ -19,9 +21,11 @@ import jakarta.transaction.Transactional;
 public class NMovieService {	// A @Service annotáció regisztrálja az osztályt a Spring context-ben, és jelzi, hogy ez az üzleti logikáért felelős réteg. Ezáltal a Spring tudja automatikusan injektálni más bean-ekbe.
 	
 	private final NMovieRepository nMovieRepository;
+	private final NMovieMapper mapper;
 	
-	public NMovieService(NMovieRepository nMovieRepository) {
+	public NMovieService(NMovieRepository nMovieRepository, NMovieMapper mapper) {
 		this.nMovieRepository = nMovieRepository;
+		this.mapper = mapper;
 	}
 	
 	public Page<NMovie> getAllMovies(Pageable pageable){
@@ -53,6 +57,13 @@ public class NMovieService {	// A @Service annotáció regisztrálja az osztály
 	@Transactional
 	public Double getAverageRuntime() {
 		return nMovieRepository.findAverageRuntime();
+	}
+	
+	@Transactional
+	public NMovie updateMovie(Long id, NMovieUpdateRequest dto) {
+	    NMovie movie = nMovieRepository.findById(id).orElseThrow(() -> new NMovieNotFoundException(id));
+	    mapper.updateEntity(movie, dto); // csak a nem-null mezőket írja át
+	    return nMovieRepository.save(movie);
 	}
 	
 	@Transactional
